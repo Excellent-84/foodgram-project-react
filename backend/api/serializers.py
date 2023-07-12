@@ -1,9 +1,6 @@
-import base64
-
-from django.core.files.base import ContentFile
 from djoser.serializers import UserCreateSerializer, UserSerializer
 from rest_framework.serializers import (
-    ImageField, IntegerField, ListField, ModelSerializer,
+    IntegerField, ListField, ModelSerializer,
     PrimaryKeyRelatedField, ReadOnlyField, SerializerMethodField,
     ValidationError
 )
@@ -11,16 +8,8 @@ from rest_framework.serializers import (
 from recipes.models import (
     Favorite, Ingredient, Recipe, RecipeIngredient, ShoppingCart, Tag
 )
+from .fields import Base64ImageField
 from users.models import Follow, User
-
-
-class Base64ImageField(ImageField):
-    def to_internal_value(self, data):
-        if isinstance(data, str) and data.startswith('data:image'):
-            format, imgstr = data.split(';base64,')
-            ext = format.split('/')[-1]
-            data = ContentFile(base64.b64decode(imgstr), name='temp.' + ext)
-        return super().to_internal_value(data)
 
 
 class CustomUserCreateSerializer(UserCreateSerializer):
