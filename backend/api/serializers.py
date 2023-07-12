@@ -5,10 +5,10 @@ from rest_framework.serializers import (
     ValidationError
 )
 
+from .fields import Base64ImageField
 from recipes.models import (
     Favorite, Ingredient, Recipe, RecipeIngredient, ShoppingCart, Tag
 )
-from .fields import Base64ImageField
 from users.models import Follow, User
 
 
