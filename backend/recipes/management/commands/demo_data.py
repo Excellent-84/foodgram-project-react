@@ -1,13 +1,13 @@
 import csv
 import os
 import random
+
 from faker import Faker
 
 from django.conf import settings
 from django.core.files.images import ImageFile
 from django.core.management.base import BaseCommand
 from django.contrib.auth.hashers import make_password
-
 from recipes.models import Ingredient, Tag, Recipe, RecipeIngredient
 from users.models import User
 
