@@ -10,6 +10,8 @@ Foodgram - это "Продуктовый помощник", онлайн-сер
 ### Сайт доступен по адресу: 
 
 https://fgram.sytes.net/
+login: admin
+password: project1477
 
 
 ### Стек технологий:
@@ -76,31 +78,35 @@ sudo systemctl start nginx
 ```
 ##### Загрузить образы из DockerHub:
 ```
-sudo docker compose -f docker-compose.yml pull
+sudo docker compose -f docker-compose.production.yml pull
 ```
 ##### Остановить и удалить все контейнеры:
 ```
-sudo docker compose -f docker-compose.yml down
+sudo docker compose -f docker-compose.production.yml down
 ```
 ##### Запустить контейнеры из образов в фоновом режиме: 
 ```
-sudo docker compose -f docker-compose.yml up -d
+sudo docker compose -f docker-compose.production.yml up -d
 ```
 ##### Выполнить миграции: 
 ``` 
-sudo docker compose -f docker-compose.yml exec backend python manage.py migrate 
+sudo docker compose -f docker-compose.production.yml exec backend python manage.py migrate 
 ```
 ##### Собрать статику:
 ``` 
-sudo docker compose -f docker-compose.yml exec backend python manage.py collectstatic
-```
-##### Звгрузить список ингредиентов в базу данных:
-``` 
-sudo docker compose -f docker-compose.yml exec backend python manage.py import_data
+sudo docker compose -f docker-compose.production.yml exec backend python manage.py collectstatic
 ```
 ##### Создать суперпользователя (указать логин, e-mail, пароль):
 ``` 
-sudo docker compose -f docker-compose.yml exec backend python manage.py createsuperuser 
+sudo docker compose -f docker-compose.production.yml exec backend python manage.py createsuperuser 
 ```
+##### Загрузить список ингредиентов в базу данных:
+``` 
+sudo docker compose -f docker-compose.production.yml exec backend python manage.py import_data
+``` 
+##### Загрузить тестовые данные:
+``` 
+sudo docker compose -f docker-compose.production.yml exec backend python manage.py demo_data
+``` 
 
 #### Автор [Excellent-84](https://github.com/Excellent-84)
