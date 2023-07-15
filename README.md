@@ -10,7 +10,9 @@ Foodgram - это "Продуктовый помощник", онлайн-сер
 ### Сайт доступен по адресу: 
 
 https://fgram.sytes.net/
+
 login: admin
+
 password: project1477
 
 
@@ -41,7 +43,7 @@ sudo apt-get install docker-compose-plugin
 ```
 ##### Создать файл .env и указать переменные по примеру .env.example:
 ``` 
-cd foodgram-project-react
+cd foodgram
 sudo nano .env
 ```
 ##### Установить и запустить Nginx:
