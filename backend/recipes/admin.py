@@ -26,8 +26,8 @@ class IngredientAdmin(admin.ModelAdmin):
 
 @admin.register(Recipe)
 class RecipeAdmin(admin.ModelAdmin):
-    fields = ('author', 'name', 'text', 'cooking_time', 'likes')
-    list_display = ('id', 'author', 'name', 'cooking_time', 'likes')
+    fields = ('author', 'name', 'likes')
+    list_display = ('id', 'author', 'name', 'likes')
     list_filter = ('author', 'name', 'tags')
     inlines = (IngredientInline,)
 
