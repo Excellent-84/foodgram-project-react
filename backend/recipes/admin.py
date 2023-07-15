@@ -32,7 +32,7 @@ class RecipeAdmin(admin.ModelAdmin):
     inlines = (IngredientInline,)
 
     def likes(self, obj):
-        return Favorite.objects.filter(recipes=obj).count()
+        return Favorite.objects.filter(recipe=obj).count()
 
 
 @admin.register(RecipeIngredient)
