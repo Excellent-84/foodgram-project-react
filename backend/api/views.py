@@ -123,9 +123,10 @@ class RecipeViewSet(ModelViewSet):
         ['POST', 'DELETE'], detail=True, permission_classes=(IsAuthenticated,)
     )
     def favorite(self, request, **kwargs):
+        recipe = get_object_or_404(Recipe, id=kwargs['pk'])
         if request.method == 'POST':
-            return self.add_favorites(Favorite, request, kwargs.get('pk'))
-        return self.delete_favorites(Favorite, request, kwargs.get('pk'))
+            return self.add_favorites(Favorite, request, recipe)
+        return self.delete_favorites(Favorite, request, recipe)
 
     @action(
         ['POST', 'DELETE'], detail=True, permission_classes=(IsAuthenticated,)
