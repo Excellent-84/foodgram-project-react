@@ -26,12 +26,12 @@ class IngredientAdmin(admin.ModelAdmin):
 
 @admin.register(Recipe)
 class RecipeAdmin(admin.ModelAdmin):
-    list_display = ('id', 'author', 'name')
+    list_display = ('id', 'author', 'name', 'likes')
     list_filter = ('author', 'name', 'tags')
     inlines = (IngredientInline,)
 
-    # def likes(self, obj):
-    #    return obj.favorite.count()
+    def likes(self, obj):
+        return Favorite.objects.filter(recipes=obj).count()
 
 
 @admin.register(RecipeIngredient)

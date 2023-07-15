@@ -129,7 +129,7 @@ class RecipeCreateSerializer(ModelSerializer):
             if amount < 1:
                 raise ValidationError('Добавьте количество ингредиента')
             if ingredient in ingredients_list:
-                raise ValidationError('Ингредиенты не должны поаторяться')
+                raise ValidationError('Ингредиенты не должны повторяться')
             ingredients_list.append(ingredient)
         if data['cooking_time'] < 1:
             raise ValidationError('Добавьте время приготовления')
